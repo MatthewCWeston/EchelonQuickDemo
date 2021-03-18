@@ -193,6 +193,8 @@
 					<input type="file" style='display:none' id="fileUpload">-->
 					<div onclick="" style='display:none'>Data</div>
 					<input type="file" style='display:none' id="fileUpload">
+					<!-- Get data -->
+					<div onclick="copyData()">Data to clipboard</div>
 				</div>
 				<h1>Selection Sample</h1>
 				<p>Typical Query:</p>
@@ -587,12 +589,12 @@
 			render();
 		}
     
-    function processResponse(msg) {
-      console.log("new data: " + msg);
-      console.log(msg);
-			//msg = JSON.parse(msg);
-			addData(msg['data']);
-    }
+	    function processResponse(msg) {
+	      console.log("new data: " + msg);
+	      console.log(msg);
+				//msg = JSON.parse(msg);
+				addData(msg['data']);
+	    }
 
 		function sendFile() {
 			console.log(this.files[0]);
@@ -605,15 +607,19 @@
 			})
 			.then(response => response.json())
 			.then(data => {
-        //console.log(data);
-        //console.log(data.path);
-        console.log('adding data:');
-        addData(data['data']);
-        console.log('added.');
-      })
+		        //console.log(data);
+		        //console.log(data.path);
+		        console.log('adding data:');
+		        addData(data['data']);
+		        console.log('added.');
+		    })
 			.catch(error => {console.error(error);});
 		}
 		document.getElementById("fileUpload").addEventListener("change", sendFile);
+
+		function copyData() {
+			navigator.clipboard.writeText(data);
+		}
 	</script>
 
 	<script src='./ech_demo.js'></script>
