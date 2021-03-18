@@ -618,7 +618,7 @@
 		document.getElementById("fileUpload").addEventListener("change", sendFile);
 
 		function copyData() {
-			navigator.clipboard.writeText(data);
+			navigator.clipboard.writeText(JSON.stringify(data));
 		}
 	</script>
 
