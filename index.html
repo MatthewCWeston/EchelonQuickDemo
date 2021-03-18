@@ -547,8 +547,8 @@
 		}
 		document.getElementById("canvas").onwheel = function(e) {
 			let new_zoom = zoom * (1 + -e.deltaY / 2500);
-			scrollOffset[0] += (new_zoom-zoom) * cw / 2;
-			scrollOffset[1] += (new_zoom-zoom) * ch / 2;
+			scrollOffset[0] = (mousePos[0] + scrollOffset[0] + scrollCurrent[0] - b) / zoom * new_zoom + b - mousePos[0];
+			scrollOffset[1] = (mousePos[1] + scrollOffset[1] + scrollCurrent[1] - b) / zoom * new_zoom + b - mousePos[1];
 			zoom = new_zoom;
 			render();
 		}
