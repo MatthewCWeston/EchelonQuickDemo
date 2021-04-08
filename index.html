@@ -650,7 +650,6 @@
 				let y = cx[1]/cc;
 				clusters[c].forEach(d => { // distance
 					d[1] = ((d[1][0]-x)**2 + (d[1][0]-x)**2)**.5;
-					console.log(d[2]);
 				});
 				// Sort by proximity
 				clusters[c].sort(function(a,b) { return (a[1] - b[1]); });
